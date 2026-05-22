@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watch --verbose",
-    "api": "json-server ./api/db.json"
+    "api": "json-server ./api/db.json",
+    "web": "npx http-server public -p 8080 -o"
   },
   "jest": {
     "testEnvironment": "node",
