@@ -3,28 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yoda's Airhorn - Click with the Force, You Must</title>
+    <title>Yoda's Haikus for Boos - Wisdom in Verse, You Must Find</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🎺 Yoda's Airhorn 🎺</h1>
-            <p class="subtitle">Click with the Force, you must</p>
+            <h1>📜 Yoda's Haikus for Boos 📜</h1>
+            <p class="subtitle">Wisdom in verse, find you must</p>
         </div>
 
         <div class="content">
-            <button id="airhorn-button" class="airhorn-button">
-                <span class="button-text">HONK!</span>
+            <button id="haiku-button" class="haiku-button">
+                <span class="button-text">Generate Haiku</span>
             </button>
             
             <div class="stats">
-                <p class="stat-label">Honks Activated:</p>
-                <p class="stat-value" id="honk-count">0</p>
+                <p class="stat-label">Haikus Generated:</p>
+                <p class="stat-value" id="haiku-count">0</p>
             </div>
 
             <div class="wisdom">
-                <p id="yoda-quote" class="yoda-quote"></p>
+                <p id="yoda-haiku" class="yoda-haiku"></p>
+            </div>
+
+            <div class="controls">
+                <button id="speak-button" class="speak-button" disabled>
+                    <span>🔊 Speak This Haiku</span>
+                </button>
             </div>
         </div>
 
@@ -33,6 +39,6 @@
         </footer>
     </div>
 
-    <script src="airhorn.js"></script>
+    <script src="haiku-generator.js"></script>
 </body>
 </html>
