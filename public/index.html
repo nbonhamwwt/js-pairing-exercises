@@ -14,7 +14,7 @@
         </div>
 
         <div class="content">
-            <button id="haiku-button" class="haiku-button">
+            <button id="haiku-button" class="haiku-button" aria-label="Generate a new haiku">
                 <span class="button-text">Generate Haiku</span>
             </button>
             
@@ -24,11 +24,11 @@
             </div>
 
             <div class="wisdom">
-                <p id="yoda-haiku" class="yoda-haiku"></p>
+                <p id="yoda-haiku" class="yoda-haiku" role="article" aria-live="polite">Loading wisdom...</p>
             </div>
 
             <div class="controls">
-                <button id="speak-button" class="speak-button" disabled>
+                <button id="speak-button" class="speak-button" disabled aria-label="Speak the haiku using text-to-speech">
                     <span>🔊 Speak This Haiku</span>
                 </button>
             </div>
