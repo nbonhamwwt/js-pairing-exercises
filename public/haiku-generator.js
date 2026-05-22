@@ -71,56 +71,66 @@ class YodaHaikuGenerator {
 // Initialize the haiku generator
 const yodaHaiku = new YodaHaikuGenerator();
 
-// Get DOM elements
+// Get DOM elements with null checks
 const button = document.getElementById('haiku-button');
 const haikuCountDisplay = document.getElementById('haiku-count');
 const yodaHaikuDisplay = document.getElementById('yoda-haiku');
 const speakButton = document.getElementById('speak-button');
 
-// Set initial haiku
-yodaHaikuDisplay.textContent = yodaHaiku.getRandomHaiku();
+// Verify all DOM elements exist before proceeding
+if (!button || !haikuCountDisplay || !yodaHaikuDisplay || !speakButton) {
+  console.error('❌ Error: Required DOM elements not found. Check your HTML.');
+} else {
+  // Set initial haiku
+  const initialHaiku = yodaHaiku.getRandomHaiku();
+  yodaHaikuDisplay.textContent = initialHaiku;
 
-// Add event listener to generate button
-button.addEventListener('click', () => {
-  // Get new haiku
-  const haiku = yodaHaiku.getRandomHaiku();
-  yodaHaikuDisplay.textContent = haiku;
+  // Add event listener to generate button
+  button.addEventListener('click', () => {
+    // Get new haiku
+    const haiku = yodaHaiku.getRandomHaiku();
+    yodaHaikuDisplay.textContent = haiku;
 
-  // Update count
-  const newCount = yodaHaiku.incrementCount();
-  haikuCountDisplay.textContent = newCount;
+    // Update count
+    const newCount = yodaHaiku.incrementCount();
+    haikuCountDisplay.textContent = newCount;
 
-  // Enable speak button
-  speakButton.disabled = false;
+    // Enable speak button
+    speakButton.disabled = false;
 
-  // Add animation class
-  button.classList.add('generating');
-  setTimeout(() => {
-    button.classList.remove('generating');
-  }, 500);
-});
+    // Add animation class
+    button.classList.add('generating');
+    setTimeout(() => {
+      button.classList.remove('generating');
+    }, 500);
+  });
 
-// Add event listener to speak button
-speakButton.addEventListener('click', () => {
-  const haiku = yodaHaiku.getCurrentHaiku();
-  // Remove line breaks for natural speech
-  const haikuText = haiku.replace(/\n/g, ' ');
-  yodaHaiku.speakHaiku(haikuText);
+  // Add event listener to speak button
+  speakButton.addEventListener('click', () => {
+    const haiku = yodaHaiku.getCurrentHaiku();
+    // Remove line breaks for natural speech
+    const haikuText = haiku.replace(/\n/g, ' ');
+    yodaHaiku.speakHaiku(haikuText);
 
-  // Visual feedback
-  speakButton.classList.add('speaking');
-  setTimeout(() => {
-    speakButton.classList.remove('speaking');
-  }, 500);
-});
+    // Visual feedback
+    speakButton.classList.add('speaking');
+    setTimeout(() => {
+      speakButton.classList.remove('speaking');
+    }, 500);
+  });
 
-// Allow keyboard activation (spacebar to generate)
-document.addEventListener('keydown', (event) => {
-  if (event.code === 'Space' && event.target === document.body) {
-    event.preventDefault();
-    button.click();
-  }
-});
+  // Allow keyboard activation (spacebar to generate)
+  // More robust: listen on document and check for spacebar
+  document.addEventListener('keydown', (event) => {
+    if (event.code === 'Space') {
+      // Only prevent default if we're not in an input field
+      if (event.target === document.body || event.target.tagName !== 'INPUT') {
+        event.preventDefault();
+        button.click();
+      }
+    }
+  });
 
-// Log to console that we're ready
-console.log('📜 Yoda\'s Haikus for Boos is ready! Wisdom in verse, find you must.');
+  // Log to console that we're ready
+  console.log('📜 Yoda\'s Haikus for Boos is ready! Wisdom in verse, find you must.');
+}
