@@ -40,6 +40,23 @@ class YodaHaikuGenerator {
 
   incrementCount() {
     this.haikuCount++;
+
+    // 🔴 Easter egg: every 10th haiku, Vader speaks from the shadows
+    if (this.haikuCount % 10 === 0) {
+      console.log(
+        '%c🔴 A presence stirs in the Dark Side of the console... 🔴',
+        'color: red; font-weight: bold; font-size: 14px;'
+      );
+      console.log(
+        '%c' +
+        '  — A haiku, by Darth Vader —\n\n' +
+        '  I am your father\n' +
+        '  The Dark Side compiles faster\n' +
+        '  Join me — merge conflict',
+        'color: #cc0000; font-style: italic; font-size: 13px;'
+      );
+    }
+
     return this.haikuCount;
   }
 
