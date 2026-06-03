@@ -19,3 +19,13 @@ Code and stars align
 #   I am your father
 #   The Dark Side compiles faster
 #   Join me — merge conflict
+
+---
+
+# 💛 Yousa also not supposed to find dis. 💛
+#
+# A haiku, by Jar Jar Binks:
+#
+#   Meesa hit deploy
+#   Oopsie, da prod is broken
+#   How wude dis bug is
