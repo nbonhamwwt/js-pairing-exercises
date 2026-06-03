@@ -9,13 +9,3 @@ Reality bends
 May the Force be strong
 With you, dear reader, thank you
 Code and stars align
-
----
-
-# 🔴 You were not supposed to find this. 🔴
-#
-# A haiku, by Darth Vader:
-#
-#   I am your father
-#   The Dark Side compiles faster
-#   Join me — merge conflict
