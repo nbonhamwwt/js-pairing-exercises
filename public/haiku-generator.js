@@ -57,22 +57,6 @@ class YodaHaikuGenerator {
       );
     }
 
-    // 💛 Easter egg: every 5th haiku (but not 10th), Jar Jar crashes the console
-    if (this.haikuCount % 5 === 0 && this.haikuCount % 10 !== 0) {
-      console.log(
-        '%c💛 Jar Jar Binks has entered da console... 💛',
-        'color: orange; font-weight: bold; font-size: 14px;'
-      );
-      console.log(
-        '%c' +
-        '  — A haiku, by Jar Jar Binks —\n\n' +
-        '  Meesa hit deploy\n' +
-        '  Oopsie, da prod is broken\n' +
-        '  How wude dis bug is',
-        'color: #cc8800; font-style: italic; font-size: 13px;'
-      );
-    }
-
     return this.haikuCount;
   }
 
