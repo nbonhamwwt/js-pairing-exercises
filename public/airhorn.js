@@ -1,22 +1,22 @@
-// Yoda's Airhorn - Click with the Force, you must!
+// Chewbacca's Airhorn - RRWWGH with the Force, you must!
 
 class AirhornSoundGenerator {
   constructor() {
     this.audioContext = null;
     this.honkCount = 0;
-    this.yodaQuotes = [
-      "Honk, you must. Silence, golden it is not.",
-      "Strong with the Force, this airhorn is.",
-      "Patience, you have not. Honk again, you will.",
-      "Wise, the sound of celebration is.",
-      "Disturb the peace, we shall. Regret it, I will not.",
-      "Feel the vibrations, you must.",
-      "One with the airhorn, become you will.",
-      "Honk responsibly, you should.",
-      "The Force flows through this button, yes.",
-      "Nine-hundred years old, I am. Never tire of honking, I do not.",
-      "Funny, this sound is. Laugh, you should.",
-      "Annoying neighbors, sorry I am not.",
+    this.chewbaccaQuotes = [
+      "RRWWGH. Aarrgh rwwgh grr. RRWWGH.",
+      "Hrrrn aarrgh. Rwwgh grr rrrwwgh. AARRGH.",
+      "Grr rrwwgh aarrgh. RRRWWGH. Hrrrn.",
+      "AARRGH RRWWGH GRR. Rwwgh hrrrn aarrgh.",
+      "Rrrwwgh... aarrgh grr. RRWWGH RRWWGH.",
+      "Hrrrn. Grr aarrgh rrrwwgh. AARRGH.",
+      "RWWGH GRR AARRGH. Hrrrn rrwwgh grr.",
+      "Aarrgh rrrwwgh hrrrn. GRR. RRWWGH.",
+      "Grr hrrrn aarrgh rwwgh. RRRWWGH GRR.",
+      "AARRGH. Rrwwgh grr hrrrn. Rrrwwgh aarrgh.",
+      "Rwwgh aarrgh grr. HRRRN. RRWWGH GRR.",
+      "RRRWWGH AARRGH. Grr hrrrn rwwgh. Rrwwgh.",
     ];
   }
 
@@ -86,7 +86,7 @@ class AirhornSoundGenerator {
   }
 
   getRandomQuote() {
-    return this.yodaQuotes[Math.floor(Math.random() * this.yodaQuotes.length)];
+    return this.chewbaccaQuotes[Math.floor(Math.random() * this.chewbaccaQuotes.length)];
   }
 
   incrementCount() {
@@ -138,4 +138,4 @@ document.addEventListener('keydown', (event) => {
 });
 
 // Log to console that we're ready
-console.log('🎺 Yoda\'s Airhorn is ready! Click with the Force, you must.');
+console.log('🟤 Chewbacca\'s Airhorn is ready! RRWWGH with the Force, you must.');
