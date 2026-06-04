@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chewbacca's Haikus For Sophisticated Scholars</title>
+    <title>Star Wars Haiku Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="theme-chewbacca">
     <div class="container">
         <div class="header">
-            <h1>Chewbacca's Haikus For Sophisticated Scholars</h1>
+            <h1 id="page-title">Chewbacca's Haikus For Sophisticated Scholars</h1>
+        </div>
+
+        <div class="character-toggle">
+            <button class="char-btn active" data-character="chewbacca">Chewbacca</button>
+            <button class="char-btn" data-character="yoda">Yoda</button>
+            <button class="char-btn" data-character="c3po">C-3PO</button>
+            <button class="char-btn" data-character="jarjar">Jar Jar Binks</button>
         </div>
 
         <div class="content">
@@ -18,7 +25,7 @@
             </button>
 
             <div class="wisdom">
-                <p id="yoda-haiku" class="yoda-haiku" role="article" aria-live="polite"></p>
+                <p id="haiku-display" class="haiku-display" role="article" aria-live="polite"></p>
             </div>
 
             <div class="controls">
@@ -29,7 +36,7 @@
         </div>
 
         <footer>
-            <p>Brought to you by Chewbacca 🟤</p>
+            <p id="footer-text">Brought to you by Chewbacca 🟤</p>
         </footer>
     </div>
 
