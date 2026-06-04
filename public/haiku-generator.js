@@ -4,7 +4,7 @@ const CHARACTERS = {
   chewbacca: {
     title: "Chewbacca's Haikus For Sophisticated Scholars",
     footer: "Brought to you by Chewbacca 🟤",
-    theme: "theme-chewbacca",
+    theme: "chewbacca",
     speech: { rate: 0.8, pitch: 0.3 },
     haikus: [
       "Aarrrggghhh rwwwgh grr\nMwaaaaaarrgh hnnngh raaarrgh woof\nGrrrrwwwgh aarrgh",
@@ -25,7 +25,7 @@ const CHARACTERS = {
   yoda: {
     title: "Yoda's Haikus For The Enlightened Padawan",
     footer: "Brought to you by Yoda 🌿",
-    theme: "theme-yoda",
+    theme: "yoda",
     speech: { rate: 0.75, pitch: 0.6 },
     haikus: [
       "Silent, the Force is\nWithin you, the answer hides\nListen, you must now",
@@ -46,7 +46,7 @@ const CHARACTERS = {
   c3po: {
     title: "C-3PO's Haikus For The Statistically Inclined",
     footer: "Brought to you by C-3PO ✨",
-    theme: "theme-c3po",
+    theme: "c3po",
     speech: { rate: 1.1, pitch: 1.4 },
     haikus: [
       "I must inform you\nThe odds of this succeeding\nAre three thousand one",
@@ -67,7 +67,7 @@ const CHARACTERS = {
   jarjar: {
     title: "Jar Jar Binks' Haikus For Da Bombad Scholars",
     footer: "Brought to you by Jar Jar Binks 🐸",
-    theme: "theme-jarjar",
+    theme: "jarjar",
     speech: { rate: 1.0, pitch: 1.2 },
     haikus: [
       "Meesa so happy\nYousa be very bombad\nOkiday den, yah",
@@ -86,101 +86,93 @@ const CHARACTERS = {
   },
 };
 
-// --- State ---
+// ── State ──────────────────────────────────────────
 let currentCharacter = 'chewbacca';
 let currentHaiku = '';
+let clickCount = 0;
 
-// --- DOM ---
-const body = document.body;
-const pageTitle = document.getElementById('page-title');
-const footerText = document.getElementById('footer-text');
+// ── DOM ────────────────────────────────────────────
+const pageTitle   = document.getElementById('page-title');
+const footerText  = document.getElementById('footer-text');
 const haikuButton = document.getElementById('haiku-button');
 const haikuDisplay = document.getElementById('haiku-display');
 const speakButton = document.getElementById('speak-button');
 const charButtons = document.querySelectorAll('.char-btn');
 
-if (!haikuButton || !haikuDisplay || !speakButton) {
-  console.error('❌ Error: Required DOM elements not found. Check your HTML.');
+if (!pageTitle || !footerText || !haikuButton || !haikuDisplay || !speakButton || charButtons.length === 0) {
+  console.error('❌ Required DOM elements not found.');
 } else {
 
-  // --- Switch character ---
+  // ── Switch character ─────────────────────────────
   function switchCharacter(character) {
     currentCharacter = character;
     const config = CHARACTERS[character];
 
-    // Update theme
-    body.className = config.theme;
+    // Swap data-theme on <body> — CSS vars update instantly
+    document.body.setAttribute('data-theme', config.theme);
 
-    // Update title and footer
+    // Update text
     pageTitle.textContent = config.title;
     footerText.textContent = config.footer;
 
-    // Update active button
-    charButtons.forEach(btn => {
-      btn.classList.toggle('active', btn.dataset.character === character);
+    // Update active toggle button
+    charButtons.forEach(function(btn) {
+      btn.classList.toggle('active', btn.getAttribute('data-character') === character);
     });
 
-    // Clear haiku display when switching characters
+    // Clear haiku when switching
     haikuDisplay.textContent = '';
     speakButton.disabled = true;
   }
 
-  // --- Get a random haiku for the current character ---
-  function getRandomHaiku() {
-    const haikus = CHARACTERS[currentCharacter].haikus;
-    return haikus[Math.floor(Math.random() * haikus.length)];
-  }
-
-  // --- Speak ---
-  function speakHaiku(text) {
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    const { rate, pitch } = CHARACTERS[currentCharacter].speech;
-    utterance.rate = rate;
-    utterance.pitch = pitch;
-    utterance.volume = 1;
-    window.speechSynthesis.speak(utterance);
-  }
-
-  // --- Character toggle listeners ---
-  charButtons.forEach(btn => {
-    btn.addEventListener('click', () => switchCharacter(btn.dataset.character));
-  });
-
-  // --- Generate haiku ---
-  haikuButton.addEventListener('click', () => {
-    currentHaiku = getRandomHaiku();
+  // ── Generate haiku ───────────────────────────────
+  function generateHaiku() {
+    var haikus = CHARACTERS[currentCharacter].haikus;
+    currentHaiku = haikus[Math.floor(Math.random() * haikus.length)];
     haikuDisplay.textContent = currentHaiku;
     speakButton.disabled = false;
 
     haikuButton.classList.add('generating');
-    setTimeout(() => haikuButton.classList.remove('generating'), 500);
+    setTimeout(function() { haikuButton.classList.remove('generating'); }, 500);
 
-    // 🔴 Easter egg: every 10th click, Vader speaks from the shadows
-    const clicks = (haikuButton.dataset.clicks = (parseInt(haikuButton.dataset.clicks || 0) + 1));
-    if (clicks % 10 === 0) {
-      console.log('%c🔴 A presence stirs in the Dark Side of the console... 🔴', 'color: red; font-weight: bold; font-size: 14px;');
-      console.log('%c  — A haiku, by Darth Vader —\n\n  I am your father\n  The Dark Side compiles faster\n  Join me — merge conflict', 'color: #cc0000; font-style: italic; font-size: 13px;');
+    // 🔴 Easter egg: every 10th click, Vader speaks
+    clickCount++;
+    if (clickCount % 10 === 0) {
+      console.log('%c🔴 A presence stirs in the Dark Side of the console... 🔴', 'color:red;font-weight:bold;font-size:14px;');
+      console.log('%c  — A haiku, by Darth Vader —\n\n  I am your father\n  The Dark Side compiles faster\n  Join me — merge conflict', 'color:#cc0000;font-style:italic;font-size:13px;');
     }
-  });
+  }
 
-  // --- Speak button ---
-  speakButton.addEventListener('click', () => {
-    const haikuText = currentHaiku.replace(/\n/g, ' ');
-    speakHaiku(haikuText);
+  // ── Speak ────────────────────────────────────────
+  function speakHaiku() {
+    if (!currentHaiku) return;
+    window.speechSynthesis.cancel();
+    var utterance = new SpeechSynthesisUtterance(currentHaiku.replace(/\n/g, ' '));
+    var voice = CHARACTERS[currentCharacter].speech;
+    utterance.rate = voice.rate;
+    utterance.pitch = voice.pitch;
+    utterance.volume = 1;
+    window.speechSynthesis.speak(utterance);
     speakButton.classList.add('speaking');
-    setTimeout(() => speakButton.classList.remove('speaking'), 500);
+    setTimeout(function() { speakButton.classList.remove('speaking'); }, 500);
+  }
+
+  // ── Event listeners ──────────────────────────────
+  charButtons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      switchCharacter(btn.getAttribute('data-character'));
+    });
   });
 
-  // --- Spacebar shortcut ---
-  document.addEventListener('keydown', (event) => {
-    if (event.code === 'Space') {
-      if (event.target === document.body || event.target.tagName !== 'INPUT') {
-        event.preventDefault();
-        haikuButton.click();
-      }
+  haikuButton.addEventListener('click', generateHaiku);
+  speakButton.addEventListener('click', speakHaiku);
+
+  document.addEventListener('keydown', function(event) {
+    if (event.code === 'Space' && event.target.tagName !== 'BUTTON' && event.target.tagName !== 'INPUT') {
+      event.preventDefault();
+      generateHaiku();
     }
   });
 
-  console.log('Star Wars Haiku Generator ready! May the Force be with you.');
+  console.log('Star Wars Haiku Generator ready!');
 }

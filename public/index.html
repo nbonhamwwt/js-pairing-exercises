@@ -6,17 +6,17 @@
     <title>Star Wars Haiku Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="theme-chewbacca">
+<body data-theme="chewbacca">
     <div class="container">
         <div class="header">
             <h1 id="page-title">Chewbacca's Haikus For Sophisticated Scholars</h1>
         </div>
 
         <div class="character-toggle">
-            <button class="char-btn active" data-character="chewbacca">Chewbacca</button>
-            <button class="char-btn" data-character="yoda">Yoda</button>
-            <button class="char-btn" data-character="c3po">C-3PO</button>
-            <button class="char-btn" data-character="jarjar">Jar Jar Binks</button>
+            <button class="char-btn char-btn--chewbacca active" data-character="chewbacca">🟤 Chewbacca</button>
+            <button class="char-btn char-btn--yoda" data-character="yoda">🌿 Yoda</button>
+            <button class="char-btn char-btn--c3po" data-character="c3po">✨ C-3PO</button>
+            <button class="char-btn char-btn--jarjar" data-character="jarjar">🐸 Jar Jar</button>
         </div>
 
         <div class="content">
@@ -29,7 +29,7 @@
             </div>
 
             <div class="controls">
-                <button id="speak-button" class="speak-button" disabled aria-label="Speak the haiku using text-to-speech">
+                <button id="speak-button" class="speak-button" disabled aria-label="Speak the haiku">
                     <span>🔊 Speak This Haiku</span>
                 </button>
             </div>
