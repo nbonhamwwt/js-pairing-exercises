@@ -1,3 +1,127 @@
+/* =============================================
+   CSS Custom Properties — one per theme
+   ============================================= */
+
+/* Chewbacca — Brown */
+.theme-chewbacca {
+  --color-bg-from:        #2a1508;
+  --color-bg-to:          #4a2010;
+  --color-container-from: #f5e6d3;
+  --color-container-to:   #e8d0b0;
+  --color-border:         #7a4f2e;
+  --color-title:          #3b1f0a;
+  --color-btn-from:       #7a4f2e;
+  --color-btn-to:         #3b1f0a;
+  --color-btn-hover-from: #9a6a42;
+  --color-btn-hover-to:   #5a2e10;
+  --color-btn-text:       #f5e6d3;
+  --color-wisdom-from:    #fdf3e7;
+  --color-wisdom-to:      #f0dfc0;
+  --color-wisdom-border:  #7a4f2e;
+  --color-haiku-text:     #3b1f0a;
+  --color-speak-from:     #c47a3a;
+  --color-speak-to:       #7a4f2e;
+  --color-footer-border:  #c4a882;
+  --color-footer-text:    #7a4f2e;
+  --color-glow-shadow:    rgba(122, 79, 46, 0.9);
+  --color-char-active-bg: #3b1f0a;
+  --color-char-active-txt:#f5e6d3;
+  --color-char-idle-bg:   #e8d0b0;
+  --color-char-idle-txt:  #3b1f0a;
+  --color-char-border:    #7a4f2e;
+}
+
+/* Yoda — Green */
+.theme-yoda {
+  --color-bg-from:        #0a1f0a;
+  --color-bg-to:          #1a3d1a;
+  --color-container-from: #e8f5e8;
+  --color-container-to:   #c8e6c8;
+  --color-border:         #2d7a2d;
+  --color-title:          #0a3d0a;
+  --color-btn-from:       #2d7a2d;
+  --color-btn-to:         #0a3d0a;
+  --color-btn-hover-from: #3a9a3a;
+  --color-btn-hover-to:   #1a5a1a;
+  --color-btn-text:       #e8f5e8;
+  --color-wisdom-from:    #f0faf0;
+  --color-wisdom-to:      #d4ecd4;
+  --color-wisdom-border:  #2d7a2d;
+  --color-haiku-text:     #0a3d0a;
+  --color-speak-from:     #3a9a3a;
+  --color-speak-to:       #2d7a2d;
+  --color-footer-border:  #8ec88e;
+  --color-footer-text:    #2d7a2d;
+  --color-glow-shadow:    rgba(45, 122, 45, 0.9);
+  --color-char-active-bg: #0a3d0a;
+  --color-char-active-txt:#e8f5e8;
+  --color-char-idle-bg:   #c8e6c8;
+  --color-char-idle-txt:  #0a3d0a;
+  --color-char-border:    #2d7a2d;
+}
+
+/* C-3PO — Gold/Yellow */
+.theme-c3po {
+  --color-bg-from:        #1a1400;
+  --color-bg-to:          #3a2e00;
+  --color-container-from: #fffbe6;
+  --color-container-to:   #f5e88a;
+  --color-border:         #b8960a;
+  --color-title:          #3a2e00;
+  --color-btn-from:       #c9a800;
+  --color-btn-to:         #7a6400;
+  --color-btn-hover-from: #e0bc00;
+  --color-btn-hover-to:   #a08200;
+  --color-btn-text:       #1a1400;
+  --color-wisdom-from:    #fffde0;
+  --color-wisdom-to:      #faf0a0;
+  --color-wisdom-border:  #b8960a;
+  --color-haiku-text:     #3a2e00;
+  --color-speak-from:     #d4aa00;
+  --color-speak-to:       #a08200;
+  --color-footer-border:  #d4c050;
+  --color-footer-text:    #7a6400;
+  --color-glow-shadow:    rgba(201, 168, 0, 0.9);
+  --color-char-active-bg: #7a6400;
+  --color-char-active-txt:#fffbe6;
+  --color-char-idle-bg:   #f5e88a;
+  --color-char-idle-txt:  #3a2e00;
+  --color-char-border:    #b8960a;
+}
+
+/* Jar Jar Binks — Taupe */
+.theme-jarjar {
+  --color-bg-from:        #1a1612;
+  --color-bg-to:          #3a3028;
+  --color-container-from: #f0ebe4;
+  --color-container-to:   #ddd4c8;
+  --color-border:         #8a7a6a;
+  --color-title:          #2e2418;
+  --color-btn-from:       #8a7a6a;
+  --color-btn-to:         #4a3c30;
+  --color-btn-hover-from: #a08a78;
+  --color-btn-hover-to:   #5a4a3c;
+  --color-btn-text:       #f0ebe4;
+  --color-wisdom-from:    #f8f4f0;
+  --color-wisdom-to:      #ede4d8;
+  --color-wisdom-border:  #8a7a6a;
+  --color-haiku-text:     #2e2418;
+  --color-speak-from:     #a08a78;
+  --color-speak-to:       #6a5a4a;
+  --color-footer-border:  #c0b0a0;
+  --color-footer-text:    #6a5a4a;
+  --color-glow-shadow:    rgba(138, 122, 106, 0.9);
+  --color-char-active-bg: #4a3c30;
+  --color-char-active-txt:#f0ebe4;
+  --color-char-idle-bg:   #ddd4c8;
+  --color-char-idle-txt:  #2e2418;
+  --color-char-border:    #8a7a6a;
+}
+
+/* =============================================
+   Base Styles (use variables throughout)
+   ============================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,43 +130,80 @@
 
 body {
     font-family: 'Georgia', serif;
-    background: linear-gradient(135deg, #2a1508 0%, #4a2010 50%, #2a1508 100%);
+    background: linear-gradient(135deg, var(--color-bg-from) 0%, var(--color-bg-to) 50%, var(--color-bg-from) 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    transition: background 0.4s ease;
 }
 
 .container {
-    background: linear-gradient(160deg, #f5e6d3 0%, #e8d0b0 100%);
+    background: linear-gradient(160deg, var(--color-container-from) 0%, var(--color-container-to) 100%);
     border-radius: 20px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     padding: 40px;
     max-width: 600px;
     width: 100%;
     text-align: center;
-    border: 4px solid #7a4f2e;
+    border: 4px solid var(--color-border);
+    transition: background 0.4s ease, border-color 0.4s ease;
 }
 
 .header {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .header h1 {
-    font-size: 2.5em;
-    color: #3b1f0a;
+    font-size: 2.2em;
+    color: var(--color-title);
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
     font-weight: bold;
+    transition: color 0.4s ease;
 }
 
-.subtitle {
-    font-size: 1.2em;
-    color: #6b3a1f;
-    font-style: italic;
-    font-weight: bold;
+/* =============================================
+   Character Toggle
+   ============================================= */
+
+.character-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
 }
+
+.char-btn {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 2px solid var(--color-char-border);
+    background: var(--color-char-idle-bg);
+    color: var(--color-char-idle-txt);
+    font-family: 'Georgia', serif;
+    font-size: 0.9em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.char-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.char-btn.active {
+    background: var(--color-char-active-bg);
+    color: var(--color-char-active-txt);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+/* =============================================
+   Content
+   ============================================= */
 
 .content {
     display: flex;
@@ -55,14 +216,14 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 4px solid #3b1f0a;
-    background: linear-gradient(135deg, #7a4f2e 0%, #3b1f0a 100%);
-    color: #f5e6d3;
+    border: 4px solid var(--color-btn-to);
+    background: linear-gradient(135deg, var(--color-btn-from) 0%, var(--color-btn-to) 100%);
+    color: var(--color-btn-text);
     font-size: 1.3em;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(59, 31, 10, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,13 +234,12 @@ body {
 
 .haiku-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(59, 31, 10, 0.7);
-    background: linear-gradient(135deg, #9a6a42 0%, #5a2e10 100%);
+    background: linear-gradient(135deg, var(--color-btn-hover-from) 0%, var(--color-btn-hover-to) 100%);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .haiku-button:active {
     transform: scale(0.95);
-    box-shadow: 0 5px 15px rgba(59, 31, 10, 0.4);
 }
 
 .button-text {
@@ -92,60 +252,34 @@ body {
 }
 
 @keyframes glow {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 10px 30px rgba(59, 31, 10, 0.5);
-    }
-    50% {
-        transform: scale(1.08);
-        box-shadow: 0 15px 50px rgba(122, 79, 46, 0.9);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 10px 30px rgba(59, 31, 10, 0.5);
-    }
-}
-
-.stats {
-    background: linear-gradient(135deg, #7a4f2e 0%, #3b1f0a 100%);
-    padding: 20px;
-    border-radius: 10px;
-    color: #f5e6d3;
-    border: 2px solid #2a1508;
-}
-
-.stat-label {
-    font-size: 1em;
-    margin-bottom: 5px;
-    opacity: 0.9;
-}
-
-.stat-value {
-    font-size: 2.5em;
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    0%   { transform: scale(1);    box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    50%  { transform: scale(1.08); box-shadow: 0 15px 50px var(--color-glow-shadow); }
+    100% { transform: scale(1);    box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 }
 
 .wisdom {
-    background: linear-gradient(135deg, #fdf3e7 0%, #f0dfc0 100%);
+    background: linear-gradient(135deg, var(--color-wisdom-from) 0%, var(--color-wisdom-to) 100%);
     padding: 30px;
     border-radius: 10px;
-    border-left: 6px solid #7a4f2e;
+    border-left: 6px solid var(--color-wisdom-border);
     min-height: 100px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: inset 0 2px 8px rgba(59, 31, 10, 0.1);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background 0.4s ease, border-color 0.4s ease;
 }
 
-.yoda-haiku {
+.haiku-display {
     font-size: 1.3em;
-    color: #3b1f0a;
+    color: var(--color-haiku-text);
     font-style: italic;
     line-height: 1.8;
     white-space: pre-wrap;
     word-wrap: break-word;
     font-family: 'Georgia', serif;
+    transition: color 0.4s ease;
 }
 
 .controls {
@@ -156,22 +290,21 @@ body {
 
 .speak-button {
     padding: 12px 24px;
-    background: linear-gradient(135deg, #c47a3a 0%, #7a4f2e 100%);
-    color: #f5e6d3;
+    background: linear-gradient(135deg, var(--color-speak-from) 0%, var(--color-speak-to) 100%);
+    color: var(--color-btn-text);
     border: none;
     border-radius: 25px;
     font-size: 1em;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(59, 31, 10, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     font-family: 'Georgia', serif;
 }
 
 .speak-button:hover:not(:disabled) {
     transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(59, 31, 10, 0.5);
-    background: linear-gradient(135deg, #d48a4a 0%, #9a6a42 100%);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 .speak-button:active:not(:disabled) {
@@ -188,30 +321,30 @@ body {
 }
 
 @keyframes pulse-speak {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.1);
-    }
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.1); }
 }
 
 footer {
     margin-top: 40px;
     padding-top: 20px;
-    border-top: 2px solid #c4a882;
-    color: #7a4f2e;
+    border-top: 2px solid var(--color-footer-border);
+    color: var(--color-footer-text);
     font-size: 0.9em;
+    transition: color 0.4s ease, border-color 0.4s ease;
 }
 
-/* Responsive Design */
+/* =============================================
+   Responsive
+   ============================================= */
+
 @media (max-width: 600px) {
     .container {
         padding: 20px;
     }
 
     .header h1 {
-        font-size: 1.8em;
+        font-size: 1.6em;
     }
 
     .haiku-button {
@@ -220,16 +353,17 @@ footer {
         font-size: 1em;
     }
 
-    .stat-value {
-        font-size: 2em;
-    }
-
-    .yoda-haiku {
+    .haiku-display {
         font-size: 1.1em;
     }
 
     .speak-button {
         padding: 10px 20px;
         font-size: 0.9em;
+    }
+
+    .char-btn {
+        padding: 6px 12px;
+        font-size: 0.8em;
     }
 }
