@@ -1,31 +1,31 @@
-// Chewbacca's Haikus For Sophisticated Scholars - Rrwwgh in Verse, You Must Aarrgh
+// Chewbacca's Haikus For Sophisticated Scholars - Aarrrggghhh in Verse, You Must RWWWGH
 
 class ChewbaccaHaikuGenerator {
   constructor() {
     this.haikus = [
-      "Rrwwgh aarrgh rwwgh grr\nRrwwgh aarrgh grr rrrwwgh rwwgh\nAarrgh grr rrwwgh hrrrn",
+      "Aarrrggghhh rwwwgh grr\nMwaaaaaarrgh hnnngh raaarrgh woof\nGrrrrwwwgh aarrgh",
 
-      "Hrrrn aarrgh rrrwwgh grr\nGrr rwwgh aarrgh rrwwgh hrrrn\nRrrwwgh grr aarrgh rwwgh",
+      "Mwaaarrgh! Hnnngh grrrr\nRwwwgh aaaarrrgh mwaarrgh hnnngh\nGrrrr woof aarrrggh",
 
-      "Aarrgh rrwwgh grr hrrrn\nRwwgh rrrwwgh aarrgh grr rwwgh\nGrr hrrrn aarrgh rrwwgh",
+      "Hnnngh raaarrgh woof grr\nAaaarrrgh mwaaarrgh rwwwgh hnnngh\nRaarrgh grrrr woooof",
 
-      "Grr rrwwgh aarrgh rwwgh\nHrrrn rrrwwgh grr aarrgh rwwgh\nRwwgh aarrgh grr hrrrn",
+      "Rwwwgh aaaarrrgh hnnngh\nGrrrr mwaaarrgh woof raaarrgh\nHnnngh aarrrggghhh grr",
 
-      "Rrrwwgh hrrrn aarrgh grr\nRwwgh grr rrwwgh aarrgh hrrrn\nAarrgh rrrwwgh grr rwwgh",
+      "Woof grrrr mwaaarrgh\nAaaarrrgh hnnngh rwwwgh raaarrgh\nGrr aarrrggghhh woof",
 
-      "Rwwgh grr hrrrn aarrgh\nAarrgh rrwwgh rrrwwgh grr rwwgh\nHrrrn grr aarrgh rrwwgh",
+      "Raaarrgh hnnngh grrrr\nMwaaarrgh woof aaaarrrgh rwwwgh\nAarrrggghhh grr hnnngh",
 
-      "Rrwwgh grr aarrgh hrrrn\nRrrwwgh rwwgh grr aarrgh rrwwgh\nGrr aarrgh hrrrn rrrwwgh",
+      "Aaaarrrgh mwaaarrgh grr\nHnnngh rwwwgh woof raaarrgh grr\nGrrrr aarrrggghhh woof",
 
-      "Aarrgh rwwgh hrrrn grr\nRrrwwgh aarrgh rrwwgh grr rwwgh\nHrrrn grr rrrwwgh aarrgh",
+      "Grrrr woof aaaarrrgh\nRwwwgh raaarrgh hnnngh mwaaarrgh\nAarrrggghhh grrrr woof",
 
-      "Grr aarrgh rrrwwgh rwwgh\nHrrrn rrwwgh grr aarrgh rrrwwgh\nRwwgh aarrgh grr hrrrn",
+      "Mwaaarrgh aaaarrrgh woof\nGrrrr hnnngh rwwwgh raaarrgh\nWoof aarrrggghhh grr",
 
-      "Hrrrn rrrwwgh grr rwwgh\nAarrgh grr rrwwgh hrrrn rrrwwgh\nRwwgh grr aarrgh rrwwgh",
+      "Hnnngh grrrr rwwwgh\nAaaarrrgh woof mwaaarrgh raaarrgh\nGrr aarrrggghhh hnnngh",
 
-      "Rrwwgh aarrgh hrrrn grr\nRwwgh rrrwwgh grr aarrgh rrwwgh\nGrr hrrrn rwwgh aarrgh",
+      "Raaarrgh woof grrrr\nAarrrggghhh mwaaarrgh hnnngh rwwwgh\nGrrrr aaaarrrgh woof",
 
-      "Rrrwwgh grr aarrgh rwwgh\nHrrrn aarrgh rrwwgh grr rrrwwgh\nAarrgh rwwgh grr hrrrn",
+      "Woof aarrrggghhh grr\nMwaaarrgh raaarrgh hnnngh grrrr\nRwwwgh aaaarrrgh woof",
     ];
     
     this.haikuCount = 0;
@@ -137,7 +137,6 @@ if (!button || !haikuCountDisplay || !yodaHaikuDisplay || !speakButton) {
   });
 
   // Allow keyboard activation (spacebar to generate)
-  // More robust: listen on document and check for spacebar
   document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
       // Only prevent default if we're not in an input field
@@ -149,5 +148,5 @@ if (!button || !haikuCountDisplay || !yodaHaikuDisplay || !speakButton) {
   });
 
   // Log to console that we're ready
-  console.log('📜 Chewbacca\'s Haikus For Sophisticated Scholars is ready! Rrwwgh aarrgh grr, aarrgh you must.');
+  console.log('📜 Chewbacca\'s Haikus For Sophisticated Scholars is ready! Mwaaarrgh aarrrggghhh grrrr.');
 }
