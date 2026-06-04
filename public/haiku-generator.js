@@ -1,4 +1,4 @@
-// Chewbacca's Haikus For Sophisticated Scholars - Aarrrggghhh in Verse, You Must RWWWGH
+// Chewbacca's Haikus For Sophisticated Scholars
 
 class ChewbaccaHaikuGenerator {
   constructor() {
@@ -27,8 +27,7 @@ class ChewbaccaHaikuGenerator {
 
       "Woof aarrrggghhh grr\nMwaaarrgh raaarrgh hnnngh grrrr\nRwwwgh aaaarrrgh woof",
     ];
-    
-    this.haikuCount = 0;
+
     this.currentHaiku = '';
   }
 
@@ -36,32 +35,6 @@ class ChewbaccaHaikuGenerator {
     const haiku = this.haikus[Math.floor(Math.random() * this.haikus.length)];
     this.currentHaiku = haiku;
     return haiku;
-  }
-
-  incrementCount() {
-    this.haikuCount++;
-
-    // 🔴 Easter egg: every 10th haiku, Vader speaks from the shadows
-    if (this.haikuCount % 10 === 0) {
-      console.log(
-        '%c🔴 A presence stirs in the Dark Side of the console... 🔴',
-        'color: red; font-weight: bold; font-size: 14px;'
-      );
-      console.log(
-        '%c' +
-        '  — A haiku, by Darth Vader —\n\n' +
-        '  I am your father\n' +
-        '  The Dark Side compiles faster\n' +
-        '  Join me — merge conflict',
-        'color: #cc0000; font-style: italic; font-size: 13px;'
-      );
-    }
-
-    return this.haikuCount;
-  }
-
-  getCount() {
-    return this.haikuCount;
   }
 
   getCurrentHaiku() {
@@ -74,7 +47,7 @@ class ChewbaccaHaikuGenerator {
 
     // Create speech utterance
     const utterance = new SpeechSynthesisUtterance(text);
-    
+
     // Configure voice settings
     utterance.rate = 0.8;  // Slow and rumbly, like Chewie
     utterance.pitch = 0.3; // Very low pitch for that Wookiee growl
@@ -90,29 +63,19 @@ const chewbaccaHaiku = new ChewbaccaHaikuGenerator();
 
 // Get DOM elements with null checks
 const button = document.getElementById('haiku-button');
-const haikuCountDisplay = document.getElementById('haiku-count');
-const yodaHaikuDisplay = document.getElementById('yoda-haiku');
+const haikuDisplay = document.getElementById('yoda-haiku');
 const speakButton = document.getElementById('speak-button');
 
 // Verify all DOM elements exist before proceeding
-if (!button || !haikuCountDisplay || !yodaHaikuDisplay || !speakButton) {
+if (!button || !haikuDisplay || !speakButton) {
   console.error('❌ Error: Required DOM elements not found. Check your HTML.');
 } else {
-  // Set initial haiku
-  const initialHaiku = chewbaccaHaiku.getRandomHaiku();
-  yodaHaikuDisplay.textContent = initialHaiku;
-
   // Add event listener to generate button
   button.addEventListener('click', () => {
-    // Get new haiku
     const haiku = chewbaccaHaiku.getRandomHaiku();
-    yodaHaikuDisplay.textContent = haiku;
+    haikuDisplay.textContent = haiku;
 
-    // Update count
-    const newCount = chewbaccaHaiku.incrementCount();
-    haikuCountDisplay.textContent = newCount;
-
-    // Enable speak button
+    // Enable speak button once a haiku has been generated
     speakButton.disabled = false;
 
     // Add animation class
@@ -120,6 +83,23 @@ if (!button || !haikuCountDisplay || !yodaHaikuDisplay || !speakButton) {
     setTimeout(() => {
       button.classList.remove('generating');
     }, 500);
+
+    // 🔴 Easter egg: every 10th click, Vader speaks from the shadows
+    const clicks = (button.dataset.clicks = (parseInt(button.dataset.clicks || 0) + 1));
+    if (clicks % 10 === 0) {
+      console.log(
+        '%c🔴 A presence stirs in the Dark Side of the console... 🔴',
+        'color: red; font-weight: bold; font-size: 14px;'
+      );
+      console.log(
+        '%c' +
+        '  — A haiku, by Darth Vader —\n\n' +
+        '  I am your father\n' +
+        '  The Dark Side compiles faster\n' +
+        '  Join me — merge conflict',
+        'color: #cc0000; font-style: italic; font-size: 13px;'
+      );
+    }
   });
 
   // Add event listener to speak button
@@ -147,6 +127,5 @@ if (!button || !haikuCountDisplay || !yodaHaikuDisplay || !speakButton) {
     }
   });
 
-  // Log to console that we're ready
-  console.log('📜 Chewbacca\'s Haikus For Sophisticated Scholars is ready! Mwaaarrgh aarrrggghhh grrrr.');
+  console.log("Chewbacca's Haikus For Sophisticated Scholars is ready! Mwaaarrgh aarrrggghhh grrrr.");
 }
