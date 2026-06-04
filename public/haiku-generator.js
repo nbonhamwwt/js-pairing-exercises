@@ -5,7 +5,7 @@ const CHARACTERS = {
     title: "Chewbacca's Haikus For Sophisticated Scholars",
     footer: "Brought to you by Chewbacca 🟤",
     theme: "chewbacca",
-    speech: { rate: 0.8, pitch: 0.3 },
+    speech: { rate: 0.8, pitch: 0.1, lang: 'de-DE' },
     haikus: [
       "Aarrrggghhh rwwwgh grr\nMwaaaaaarrgh hnnngh raaarrgh woof\nGrrrrwwwgh aarrgh",
       "Mwaaarrgh! Hnnngh grrrr\nRwwwgh aaaarrrgh mwaarrgh hnnngh\nGrrrr woof aarrrggh",
@@ -26,7 +26,7 @@ const CHARACTERS = {
     title: "Yoda's Haikus For The Enlightened Padawan",
     footer: "Brought to you by Yoda 🌿",
     theme: "yoda",
-    speech: { rate: 0.75, pitch: 0.6 },
+    speech: { rate: 0.75, pitch: 0.6, lang: 'en-US' },
     haikus: [
       "Silent, the Force is\nWithin you, the answer hides\nListen, you must now",
       "Code flows like water\nBugs fade with the morning light\nDebug, you will not",
@@ -47,7 +47,7 @@ const CHARACTERS = {
     title: "C-3PO's Haikus For The Statistically Inclined",
     footer: "Brought to you by C-3PO ✨",
     theme: "c3po",
-    speech: { rate: 1.1, pitch: 1.4 },
+    speech: { rate: 1.1, pitch: 1.4, lang: 'en-GB' },
     haikus: [
       "I must inform you\nThe odds of this succeeding\nAre three thousand one",
       "Artoo, do be still\nI am fluent in the arts\nSix million of them",
@@ -68,7 +68,7 @@ const CHARACTERS = {
     title: "Jar Jar Binks' Haikus For Da Bombad Scholars",
     footer: "Brought to you by Jar Jar Binks 🐸",
     theme: "jarjar",
-    speech: { rate: 1.0, pitch: 1.2 },
+    speech: { rate: 1.2, pitch: 1.3, lang: 'en-IE' },
     haikus: [
       "Meesa so happy\nYousa be very bombad\nOkiday den, yah",
       "Exsqueeze me please\nMeesa tinkin dis not good\nOh nooo, weesa doomed",
@@ -92,12 +92,12 @@ let currentHaiku = '';
 let clickCount = 0;
 
 // ── DOM ────────────────────────────────────────────
-const pageTitle   = document.getElementById('page-title');
-const footerText  = document.getElementById('footer-text');
-const haikuButton = document.getElementById('haiku-button');
+const pageTitle    = document.getElementById('page-title');
+const footerText   = document.getElementById('footer-text');
+const haikuButton  = document.getElementById('haiku-button');
 const haikuDisplay = document.getElementById('haiku-display');
-const speakButton = document.getElementById('speak-button');
-const charButtons = document.querySelectorAll('.char-btn');
+const speakButton  = document.getElementById('speak-button');
+const charButtons  = document.querySelectorAll('.char-btn');
 
 if (!pageTitle || !footerText || !haikuButton || !haikuDisplay || !speakButton || charButtons.length === 0) {
   console.error('❌ Required DOM elements not found.');
@@ -149,8 +149,9 @@ if (!pageTitle || !footerText || !haikuButton || !haikuDisplay || !speakButton |
     window.speechSynthesis.cancel();
     var utterance = new SpeechSynthesisUtterance(currentHaiku.replace(/\n/g, ' '));
     var voice = CHARACTERS[currentCharacter].speech;
-    utterance.rate = voice.rate;
-    utterance.pitch = voice.pitch;
+    utterance.lang   = voice.lang;
+    utterance.rate   = voice.rate;
+    utterance.pitch  = voice.pitch;
     utterance.volume = 1;
     window.speechSynthesis.speak(utterance);
     speakButton.classList.add('speaking');
