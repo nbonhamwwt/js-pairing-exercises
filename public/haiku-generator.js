@@ -26,7 +26,7 @@ const CHARACTERS = {
     title: "Yoda's Haikus For The Enlightened Padawan",
     footer: "Brought to you by Yoda 🌿",
     theme: "yoda",
-    speech: { rate: 0.75, pitch: 0.6, lang: 'en-US' },
+    speech: { rate: 0.75, pitch: 0.3, lang: 'en-US' },
     haikus: [
       "Silent, the Force is\nWithin you, the answer hides\nListen, you must now",
       "Code flows like water\nBugs fade with the morning light\nDebug, you will not",
@@ -47,7 +47,7 @@ const CHARACTERS = {
     title: "C-3PO's Haikus For The Statistically Inclined",
     footer: "Brought to you by C-3PO ✨",
     theme: "c3po",
-    speech: { rate: 1.1, pitch: 1.4, lang: 'en-GB' },
+    speech: { rate: 1.1, pitch: 0.5, lang: 'en-GB' },
     haikus: [
       "I must inform you\nThe odds of this succeeding\nAre three thousand one",
       "Artoo, do be still\nI am fluent in the arts\nSix million of them",
@@ -68,7 +68,7 @@ const CHARACTERS = {
     title: "Jar Jar Binks' Haikus For Da Bombad Scholars",
     footer: "Brought to you by Jar Jar Binks 🐸",
     theme: "jarjar",
-    speech: { rate: 1.2, pitch: 1.3, lang: 'en-IE' },
+    speech: { rate: 1.2, pitch: 0.4, lang: 'en-IE' },
     haikus: [
       "Meesa so happy\nYousa be very bombad\nOkiday den, yah",
       "Exsqueeze me please\nMeesa tinkin dis not good\nOh nooo, weesa doomed",
