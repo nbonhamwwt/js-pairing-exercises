@@ -1,31 +1,31 @@
-// Yoda's Haikus for Boos - Wisdom in Verse, You Must Find
+// Chewbacca's Haikus For Sophisticated Scholars - Rrwwgh in Verse, You Must Aarrgh
 
-class YodaHaikuGenerator {
+class ChewbaccaHaikuGenerator {
   constructor() {
     this.haikus = [
-      "Silence, golden is\nYour mind, still it must become\nPeace within, you seek",
-      
-      "Code flows like water\nBugs fade with the morning light\nDebug, you will not",
-      
-      "Patient, you must be\nLine by line, build your wisdom\nHaste, the enemy",
-      
-      "Fear, the path it clouds\nFail you will, if try you don't\nForce, strong in you is",
-      
-      "Questions, many ask\nAnswers within you, they hide\nListen deep, you must",
-      
-      "Tomorrow, worry not\nPresent moment, live you must\nNow, the power is",
-      
-      "Alone, you are not\nTogether, strong we become\nCommunity, seek",
-      
-      "Mistakes, teachers they are\nFall down, rise you must again\nWisdom through, you gain",
-      
-      "Rushing through your days\nStop and breathe, peace you will find\nSlow down, young one, you",
-      
-      "Help others, you should\nGive first, receive you will then\nKarma, circle turns",
-      
-      "Distracted, your mind\nFocus on one thing, you must\nMastery awaits",
-      
-      "Grateful heart you need\nEach moment, treasure you must\nLife, precious it is",
+      "Rrwwgh aarrgh rwwgh grr\nRrwwgh aarrgh grr rrrwwgh rwwgh\nAarrgh grr rrwwgh hrrrn",
+
+      "Hrrrn aarrgh rrrwwgh grr\nGrr rwwgh aarrgh rrwwgh hrrrn\nRrrwwgh grr aarrgh rwwgh",
+
+      "Aarrgh rrwwgh grr hrrrn\nRwwgh rrrwwgh aarrgh grr rwwgh\nGrr hrrrn aarrgh rrwwgh",
+
+      "Grr rrwwgh aarrgh rwwgh\nHrrrn rrrwwgh grr aarrgh rwwgh\nRwwgh aarrgh grr hrrrn",
+
+      "Rrrwwgh hrrrn aarrgh grr\nRwwgh grr rrwwgh aarrgh hrrrn\nAarrgh rrrwwgh grr rwwgh",
+
+      "Rwwgh grr hrrrn aarrgh\nAarrgh rrwwgh rrrwwgh grr rwwgh\nHrrrn grr aarrgh rrwwgh",
+
+      "Rrwwgh grr aarrgh hrrrn\nRrrwwgh rwwgh grr aarrgh rrwwgh\nGrr aarrgh hrrrn rrrwwgh",
+
+      "Aarrgh rwwgh hrrrn grr\nRrrwwgh aarrgh rrwwgh grr rwwgh\nHrrrn grr rrrwwgh aarrgh",
+
+      "Grr aarrgh rrrwwgh rwwgh\nHrrrn rrwwgh grr aarrgh rrrwwgh\nRwwgh aarrgh grr hrrrn",
+
+      "Hrrrn rrrwwgh grr rwwgh\nAarrgh grr rrwwgh hrrrn rrrwwgh\nRwwgh grr aarrgh rrwwgh",
+
+      "Rrwwgh aarrgh hrrrn grr\nRwwgh rrrwwgh grr aarrgh rrwwgh\nGrr hrrrn rwwgh aarrgh",
+
+      "Rrrwwgh grr aarrgh rwwgh\nHrrrn aarrgh rrwwgh grr rrrwwgh\nAarrgh rwwgh grr hrrrn",
     ];
     
     this.haikuCount = 0;
@@ -76,8 +76,8 @@ class YodaHaikuGenerator {
     const utterance = new SpeechSynthesisUtterance(text);
     
     // Configure voice settings
-    utterance.rate = 0.9; // Slightly slower for wisdom
-    utterance.pitch = 0.8; // Lower pitch for Yoda's voice
+    utterance.rate = 0.8;  // Slow and rumbly, like Chewie
+    utterance.pitch = 0.3; // Very low pitch for that Wookiee growl
     utterance.volume = 1;
 
     // Speak
@@ -86,7 +86,7 @@ class YodaHaikuGenerator {
 }
 
 // Initialize the haiku generator
-const yodaHaiku = new YodaHaikuGenerator();
+const chewbaccaHaiku = new ChewbaccaHaikuGenerator();
 
 // Get DOM elements with null checks
 const button = document.getElementById('haiku-button');
@@ -99,17 +99,17 @@ if (!button || !haikuCountDisplay || !yodaHaikuDisplay || !speakButton) {
   console.error('❌ Error: Required DOM elements not found. Check your HTML.');
 } else {
   // Set initial haiku
-  const initialHaiku = yodaHaiku.getRandomHaiku();
+  const initialHaiku = chewbaccaHaiku.getRandomHaiku();
   yodaHaikuDisplay.textContent = initialHaiku;
 
   // Add event listener to generate button
   button.addEventListener('click', () => {
     // Get new haiku
-    const haiku = yodaHaiku.getRandomHaiku();
+    const haiku = chewbaccaHaiku.getRandomHaiku();
     yodaHaikuDisplay.textContent = haiku;
 
     // Update count
-    const newCount = yodaHaiku.incrementCount();
+    const newCount = chewbaccaHaiku.incrementCount();
     haikuCountDisplay.textContent = newCount;
 
     // Enable speak button
@@ -124,10 +124,10 @@ if (!button || !haikuCountDisplay || !yodaHaikuDisplay || !speakButton) {
 
   // Add event listener to speak button
   speakButton.addEventListener('click', () => {
-    const haiku = yodaHaiku.getCurrentHaiku();
+    const haiku = chewbaccaHaiku.getCurrentHaiku();
     // Remove line breaks for natural speech
     const haikuText = haiku.replace(/\n/g, ' ');
-    yodaHaiku.speakHaiku(haikuText);
+    chewbaccaHaiku.speakHaiku(haikuText);
 
     // Visual feedback
     speakButton.classList.add('speaking');
@@ -149,5 +149,5 @@ if (!button || !haikuCountDisplay || !yodaHaikuDisplay || !speakButton) {
   });
 
   // Log to console that we're ready
-  console.log('📜 Yoda\'s Haikus for Boos is ready! Wisdom in verse, find you must.');
+  console.log('📜 Chewbacca\'s Haikus For Sophisticated Scholars is ready! Rrwwgh aarrgh grr, aarrgh you must.');
 }
