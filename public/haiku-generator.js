@@ -5,7 +5,7 @@ const CHARACTERS = {
     title: "Chewbacca's Haikus For Sophisticated Scholars",
     footer: "Brought to you by Chewbacca 🟤",
     theme: "chewbacca",
-    speech: { rate: 0.8, pitch: 0.1, lang: 'de-DE', voiceKeywords: ['male', 'de'] },
+    speech: { rate: 0.8, pitch: 0.1, lang: 'de-DE' },
     haikus: [
       "Aarrrggghhh rwwwgh grr\nMwaaaaaarrgh hnnngh raaarrgh woof\nGrrrrwwwgh aarrgh",
       "Mwaaarrgh! Hnnngh grrrr\nRwwwgh aaaarrrgh mwaarrgh hnnngh\nGrrrr woof aarrrggh",
@@ -26,7 +26,7 @@ const CHARACTERS = {
     title: "Yoda's Haikus For The Enlightened Padawan",
     footer: "Brought to you by Yoda 🌿",
     theme: "yoda",
-    speech: { rate: 0.75, pitch: 0.6, lang: 'en-US', voiceKeywords: ['male', 'us'] },
+    speech: { rate: 0.75, pitch: 0.6, lang: 'en-US' },
     haikus: [
       "Silent, the Force is\nWithin you, the answer hides\nListen, you must now",
       "Code flows like water\nBugs fade with the morning light\nDebug, you will not",
@@ -47,7 +47,7 @@ const CHARACTERS = {
     title: "C-3PO's Haikus For The Statistically Inclined",
     footer: "Brought to you by C-3PO ✨",
     theme: "c3po",
-    speech: { rate: 1.1, pitch: 1.4, lang: 'en-GB', voiceKeywords: ['male', 'gb', 'uk'] },
+    speech: { rate: 1.1, pitch: 1.4, lang: 'en-GB' },
     haikus: [
       "I must inform you\nThe odds of this succeeding\nAre three thousand one",
       "Artoo, do be still\nI am fluent in the arts\nSix million of them",
@@ -68,7 +68,7 @@ const CHARACTERS = {
     title: "Jar Jar Binks' Haikus For Da Bombad Scholars",
     footer: "Brought to you by Jar Jar Binks 🐸",
     theme: "jarjar",
-    speech: { rate: 1.2, pitch: 1.3, lang: 'en-IE', voiceKeywords: ['male', 'ie', 'irish'] },
+    speech: { rate: 1.2, pitch: 1.3, lang: 'en-IE' },
     haikus: [
       "Meesa so happy\nYousa be very bombad\nOkiday den, yah",
       "Exsqueeze me please\nMeesa tinkin dis not good\nOh nooo, weesa doomed",
@@ -94,62 +94,85 @@ let clickCount = 0;
 // ── Resolved voices cache (populated once voices load) ─
 const resolvedVoices = {};
 
-// ── Pick the best available male voice for a character ──
-// Strategy:
-//   1. Find all voices matching the character's lang (e.g. 'de-DE')
-//   2. Among those, prefer one whose name contains a voiceKeyword (e.g. 'male')
-//   3. If no lang match found, broaden to the language prefix (e.g. 'de')
-//      and again prefer a keyword match
-//   4. Last resort: any voice whose name contains 'male'
-function pickVoice(speechConfig) {
+// ── Known male voice names (priority order) ────────
+const MALE_VOICE_NAMES = [
+  'Google UK English Male', 'Google Deutsch',
+  'Daniel', 'Malcolm', 'Alex', 'Fred', 'Tom',
+  'Markus', 'Stefan', 'Yannick',
+  'Microsoft David', 'Microsoft Mark', 'Microsoft George', 'Microsoft Stefan',
+  'Male'
+];
+
+// ── Known female voice names (blocklist) ───────────
+const FEMALE_VOICE_NAMES = [
+  'Female', 'Zira', 'Hazel', 'Susan', 'Samantha', 'Victoria',
+  'Karen', 'Moira', 'Fiona', 'Tessa', 'Anna', 'Hedda', 'Google US English'
+];
+
+// ── Find the best male voice for a given lang ──────
+// Fallback strategy (4 passes):
+//   1. Exact lang match + known male name (priority order)
+//   2. Base language match (e.g. 'en' from 'en-IE') + known male name (priority order)
+//   3. Exact lang match + not in female blocklist
+//   4. Base language match + not in female blocklist
+//   5. Returns null — browser uses its default
+function findMaleVoice(lang) {
   var voices = window.speechSynthesis.getVoices();
   if (!voices || voices.length === 0) return null;
 
-  var lang     = speechConfig.lang;
-  var keywords = speechConfig.voiceKeywords || [];
   var langPrefix = lang.split('-')[0].toLowerCase();
 
-  // Helper: does a voice name match any keyword?
-  function hasKeyword(voice) {
-    var name = voice.name.toLowerCase();
-    return keywords.some(function(kw) { return name.indexOf(kw) !== -1; });
+  function isNotFemaleName(voice) {
+    return !FEMALE_VOICE_NAMES.some(function(name) {
+      return voice.name.indexOf(name) !== -1;
+    });
   }
 
-  // 1. Exact lang match + keyword
-  var exactWithKeyword = voices.filter(function(v) {
-    return v.lang === lang && hasKeyword(v);
-  });
-  if (exactWithKeyword.length) return exactWithKeyword[0];
+  // 1. Exact lang + known male name (respect priority order)
+  for (var i = 0; i < MALE_VOICE_NAMES.length; i++) {
+    var maleName = MALE_VOICE_NAMES[i];
+    var found = voices.find(function(v) {
+      return v.lang === lang && v.name.indexOf(maleName) !== -1;
+    });
+    if (found) return found;
+  }
 
-  // 2. Exact lang match (any voice for that locale)
-  var exactAny = voices.filter(function(v) { return v.lang === lang; });
-  if (exactAny.length) return exactAny[0];
+  // 2. Base language + known male name (respect priority order)
+  for (var j = 0; j < MALE_VOICE_NAMES.length; j++) {
+    var maleName2 = MALE_VOICE_NAMES[j];
+    var found2 = voices.find(function(v) {
+      return v.lang.toLowerCase().indexOf(langPrefix) === 0 && v.name.indexOf(maleName2) !== -1;
+    });
+    if (found2) return found2;
+  }
 
-  // 3. Language prefix match + keyword (e.g. 'en-AU' when 'en-IE' not available)
-  var prefixWithKeyword = voices.filter(function(v) {
-    return v.lang.toLowerCase().indexOf(langPrefix) === 0 && hasKeyword(v);
+  // 3. Exact lang + not female
+  var exactNotFemale = voices.find(function(v) {
+    return v.lang === lang && isNotFemaleName(v);
   });
-  if (prefixWithKeyword.length) return prefixWithKeyword[0];
+  if (exactNotFemale) return exactNotFemale;
 
-  // 4. Language prefix match (any)
-  var prefixAny = voices.filter(function(v) {
-    return v.lang.toLowerCase().indexOf(langPrefix) === 0;
+  // 4. Base language + not female
+  var prefixNotFemale = voices.find(function(v) {
+    return v.lang.toLowerCase().indexOf(langPrefix) === 0 && isNotFemaleName(v);
   });
-  if (prefixAny.length) return prefixAny[0];
-
-  // 5. Absolute fallback: any voice with 'male' in the name
-  var anyMale = voices.filter(function(v) {
-    return v.name.toLowerCase().indexOf('male') !== -1;
-  });
-  if (anyMale.length) return anyMale[0];
+  if (prefixNotFemale) return prefixNotFemale;
 
   return null;
 }
 
 // ── Resolve and cache voices for all characters ──────
 function resolveAllVoices() {
+  var voices = window.speechSynthesis.getVoices();
+
+  // Log all available voices
+  console.log('🎙️ Available voices (' + voices.length + '):');
+  voices.forEach(function(v) {
+    console.log('  ' + v.name + ' | ' + v.lang + ' | ' + (v.localService ? 'local' : 'network'));
+  });
+
   Object.keys(CHARACTERS).forEach(function(key) {
-    var voice = pickVoice(CHARACTERS[key].speech);
+    var voice = findMaleVoice(CHARACTERS[key].speech.lang);
     resolvedVoices[key] = voice;
     console.log(
       '🎙️ ' + key + ': ' + (voice ? '"' + voice.name + '" (' + voice.lang + ')' : 'no voice found, using browser default')
@@ -224,6 +247,7 @@ if (!pageTitle || !footerText || !haikuButton || !haikuDisplay || !speakButton |
     var resolvedVoice = resolvedVoices[currentCharacter];
     if (resolvedVoice) {
       utterance.voice = resolvedVoice;
+      console.log('🎙️ Voice selected: ' + resolvedVoice.name + ' (' + resolvedVoice.lang + ')');
     }
 
     window.speechSynthesis.speak(utterance);
