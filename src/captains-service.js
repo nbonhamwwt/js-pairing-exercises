@@ -4,6 +4,8 @@
 // Patience and practice, you need
 // Green, the code turns then
 
+// hahahaha you found this secret! Good for you!!!
+
 import apiClient from './apiClient';
 
 export const getCaptains = async () => {
