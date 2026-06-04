@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Georgia', serif;
-    background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 50%, #1a472a 100%);
+    background: linear-gradient(135deg, #3b2010 0%, #5c3317 50%, #3b2010 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@ body {
     max-width: 600px;
     width: 100%;
     text-align: center;
-    border: 3px solid #8b7355;
+    border: 3px solid #7a4f2e;
 }
 
 .header {
@@ -31,7 +31,7 @@ body {
 
 .header h1 {
     font-size: 2.5em;
-    color: #2d5a3d;
+    color: #5c3317;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     font-weight: bold;
@@ -55,14 +55,14 @@ body {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 3px solid #2d5a3d;
-    background: linear-gradient(135deg, #4a7c59 0%, #2d5a3d 100%);
+    border: 3px solid #5c3317;
+    background: linear-gradient(135deg, #8b5e3c 0%, #5c3317 100%);
     color: white;
     font-size: 1.3em;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 30px rgba(45, 90, 61, 0.4);
+    box-shadow: 0 10px 30px rgba(92, 51, 23, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,13 +73,13 @@ body {
 
 .haiku-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(45, 90, 61, 0.6);
-    background: linear-gradient(135deg, #5a8c69 0%, #3d6a4d 100%);
+    box-shadow: 0 15px 40px rgba(92, 51, 23, 0.6);
+    background: linear-gradient(135deg, #a06d4a 0%, #6e3d1e 100%);
 }
 
 .haiku-button:active {
     transform: scale(0.95);
-    box-shadow: 0 5px 15px rgba(45, 90, 61, 0.4);
+    box-shadow: 0 5px 15px rgba(92, 51, 23, 0.4);
 }
 
 .button-text {
@@ -94,24 +94,24 @@ body {
 @keyframes glow {
     0% {
         transform: scale(1);
-        box-shadow: 0 10px 30px rgba(45, 90, 61, 0.4);
+        box-shadow: 0 10px 30px rgba(92, 51, 23, 0.4);
     }
     50% {
         transform: scale(1.08);
-        box-shadow: 0 15px 40px rgba(74, 124, 89, 0.8);
+        box-shadow: 0 15px 40px rgba(139, 94, 60, 0.8);
     }
     100% {
         transform: scale(1);
-        box-shadow: 0 10px 30px rgba(45, 90, 61, 0.4);
+        box-shadow: 0 10px 30px rgba(92, 51, 23, 0.4);
     }
 }
 
 .stats {
-    background: linear-gradient(135deg, #4a7c59 0%, #2d5a3d 100%);
+    background: linear-gradient(135deg, #8b5e3c 0%, #5c3317 100%);
     padding: 20px;
     border-radius: 10px;
     color: white;
-    border: 2px solid #1a472a;
+    border: 2px solid #3b2010;
 }
 
 .stat-label {
@@ -127,10 +127,10 @@ body {
 }
 
 .wisdom {
-    background: linear-gradient(135deg, #f9f7f4 0%, #ede9e4 100%);
+    background: linear-gradient(135deg, #fdf8f4 0%, #f0e6da 100%);
     padding: 30px;
     border-radius: 10px;
-    border-left: 5px solid #2d5a3d;
+    border-left: 5px solid #5c3317;
     min-height: 100px;
     display: flex;
     align-items: center;
@@ -139,7 +139,7 @@ body {
 
 .yoda-haiku {
     font-size: 1.3em;
-    color: #2d5a3d;
+    color: #5c3317;
     font-style: italic;
     line-height: 1.8;
     white-space: pre-wrap;
